@@ -45,13 +45,55 @@ accuracies.std()
 
 
 
-#Simple Linear Regression
+#Multiple Linear Regression
 # Fitting Simple Linear Regression to the Training set
 from sklearn.linear_model import LinearRegression
 Lregressor = LinearRegression()
 Lregressor.fit(X_train, y_train)
 # Predicting results
 y_pred = Lregressor.predict(X_test)
+#Building optimal model using Backward Elimination
+import statsmodels.api as sm
+X=np.append(arr=np.ones((49, 1)).astype(int),values=X,axis=1)
+X_opt=X[:,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,1,2,3,4,5,6,7,8,9,10,11,13,14,15,16]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,1,2,3,4,5,6,7,8,9,10,11,13,14,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,1,2,4,5,6,7,8,9,10,11,13,14,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,1,2,4,5,6,7,8,9,10,11,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,1,4,5,6,7,8,9,10,11,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,5,6,7,8,9,10,11,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,6,7,8,9,10,11,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,7,8,9,10,11,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,7,8,9,10,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,8,9,10,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,8,10,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt=X[:,[0,4,8,13,15]]
+regressor_OLS=sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
 #Calculating MSE    
 for i in range(0,10):
     j.insert(i,(y_pred[i]-y_test[i])**2)
